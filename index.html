@@ -1,0 +1,225 @@
+<html>
+<head>
+<title>Fan Apps</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script src="jqtouch/jqtouch.js" type="application/x-javascript" charset="iso-8859-1"></script>
+
+<style type="text/css" media="screen">@import "jqtouch/jqtouch.css";</style>
+<style type="text/css" media="screen">@import "apple/theme.css";</style>
+
+<script type="text/javascript">
+var jQT = $.jQTouch({
+    icon: 'favicon.png',
+    statusBar: 'default',
+    cacheGetRequests: false,
+    fullScreen: true,
+    useFastTouch: true
+});</script>
+
+<style>
+
+body {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+.center {
+    width: 300px;
+    margin: 17px auto !important;
+}
+
+.fan {
+    position: relative;
+    height: 300px;
+    width: 300px;
+    
+    padding: 0;
+    background: url("fan.png") no-repeat;
+    background-position: 22px 22px;
+
+}
+
+.pivot {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    
+    background-color: red;
+    top: 125px;
+    left: 125px;
+}
+
+.rotor {
+    position: absolute;
+
+    width: 0;
+	height: 0;
+	border-top: 50px solid transparent;
+	border-left: 100px solid red;
+	border-bottom: 50px solid transparent;
+    border-radius: 50px;
+    
+    top: 100px;
+    left: 100px;
+}
+
+.top {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    
+    margin-top: -50px;
+}
+
+.right {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    
+    margin-left: 50px;
+}
+
+.bottom {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+
+    margin-top: 50px;
+}
+
+.left {
+    margin-left: -50px;
+}
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to { 
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes rotate {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to { 
+    -moz-transform: rotate(360deg);
+  }
+}
+.running
+{
+    -webkit-animation-name:             rotate; 
+    -webkit-animation-duration:         0.5s; 
+    -webkit-animation-iteration-count:  infinite;
+    -webkit-animation-timing-function: linear;
+    
+    -moz-animation-name:             rotate; 
+    -moz-animation-duration:         0.5s; 
+    -moz-animation-iteration-count:  infinite;
+    -moz-animation-timing-function: linear;
+}
+.fast {
+    -webkit-animation-duration:         0.3s;
+    -moz-animation-duration:            0.3s; 
+}
+.middle {
+    -webkit-animation-duration:         0.5s; 
+    -moz-animation-duration:            0.5s; 
+}
+.slow {
+    -webkit-animation-duration:         1s; 
+    -moz-animation-duration:            1s; 
+}
+
+#speed {
+    width: 100%;
+}
+
+</style>
+
+</head>
+<body>
+<div id="jqt">
+    <div id="home" class="current">
+        <div class="toolbar">
+            <h1>Fan Apps</h1>
+            <span class="toggle"><input type="checkbox" id="start_rotation"></span>
+            
+        </div>
+
+        <div class="info">
+			<h2>Bring some fresh air into your life!</h2>
+		</div>
+
+        <div class="center">
+        <div class="fan middle" id="fan1">
+            <!--<div class="pivot"></div>
+            <div class="rotor top"></div>
+            <div class="rotor right"></div>
+            <div class="rotor bottom"></div>
+            <div class="rotor left"></div>-->
+        </div>
+        </div>
+        
+        <ul class="rounded">
+            <li><input type="range" id="speed" min="0" max="2" value="1" /></li>
+        </ul>
+        
+        <p class="info">&copy; by Apps 2012</p>
+
+        <div class="bottom_menu">
+        <br />
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+var running = false;
+
+$('#speed').change(function() {changeSpeed($('#speed').val());});
+
+$('#start_rotation').click(function() {
+    if(!running){
+        start();
+    } else{
+        stop();
+    }
+    running = !running;
+});
+
+function start(){
+    $('#fan1').addClass('running');
+    $('#start_rotation').val('on');
+}
+
+function stop(){
+    $('#fan1').removeClass('running');
+    $('#start_rotation').val('off');
+}
+
+function changeSpeed(s){
+    speed = ['slow','middle','fast'];
+    c = !speed[s] ? 'middle' : speed[s];
+
+    $('#fan1').removeClass('fast');
+    $('#fan1').removeClass('middle');
+    $('#fan1').removeClass('slow');
+    
+    $('#fan1').addClass(c);
+    
+    $('#fan1').removeClass('running');
+    if(running){
+        $('#fan1').delay(50).addClass('running');
+    }
+}
+
+</script>
+
+</body>
+</html>

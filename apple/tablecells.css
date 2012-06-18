@@ -1,0 +1,228 @@
+/* make tables work nicely */
+
+#jqt div.center table {
+    color: black;
+    background: #fff;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    
+    table-layout: fixed;
+    
+    width: 100%;
+    margin: 0;
+    
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+    
+    white-space: nowrap;
+}
+
+#jqt div.center {
+    color: black;
+    background: transparent;
+    border: 1px solid #B4B4B4;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    font: bold 17px "Helvetica Neue", Helvetica;
+    padding: 0;
+    margin: 15px 10px 17px 10px;
+}
+
+#jqt thead, #jqt tbody, #jqt tr {
+    width: 100%;
+}
+
+#jqt ul li, #jqt table td, #jqt table th {
+    color: #666;
+
+    list-style-type: none;
+    padding: 10px 10px 10px 10px;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#jqt ul li, #jqt table tbody td {
+    border-top: 1px solid #B4B4B4;
+}   
+
+#jqt table th {
+    color: black;
+}
+
+/* browser compatibility */
+
+#jqt li:first-child, #jqt li:first-child a, #jqt thead tr, #jqt thead {
+    border-top: 0;
+    -webkit-border-top-left-radius: 8px;
+    -webkit-border-top-right-radius: 8px;
+    -moz-border-radius-topleft: 8px;
+    -moz-border-radius-topright: 8px;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+#jqt li:last-child, #jqt li:last-child a, #jqt tbody, #jqt tbody tr:last-child, #jqt tbody tr:last-child a {
+    -webkit-border-bottom-left-radius: 8px;
+    -webkit-border-bottom-right-radius: 8px;
+    -moz-border-radius-bottomleft: 8px;
+    -moz-border-radius-bottomright: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+#jqt ul.edgetoedge, #jqt ul.edgetoedge * {
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
+#jqt ul li small.counter {
+    -webkit-border-radius: 11px;
+    -moz-border-radius: 11px;
+    border-radius: 11px;
+}
+
+#jqt ul.edgetoedge, #jqt ul.metal, #jqt ul.plastic {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+#jqt ul.plastic {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+#jqt ul.plastic li {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+#jqt #plastic ul.minibanner li {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#jqt #plastic ul.bigbanner li {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#jqt ul.individual li {
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+#jqt ul.individual li + li {
+    float: right;
+}
+
+#jqt ul.individual li a {
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+
+#jqt .toggle input[type="checkbox"] {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+input[type='submit'] {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+/* specific for result service */
+/* mainly to manage table column width and display */
+
+#jqt .info h2 {
+    color: #4C566C;
+    line-height: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+thead {
+    width: 100%;
+}
+
+.rank {
+    width: 65px;
+}
+.name {
+    min-width: 100px;
+}
+.yob {
+    width: 60px;
+}
+.town {
+    min-width: 100px;
+}
+.club {
+    width: 30%;
+}
+.time {
+    text-align: right !important;
+    width: 90px;
+}
+
+@media screen and (max-width: 400px) {
+    .club {
+        display: none;
+    }
+    .yob {
+        display: none;
+    }
+    .time {
+        width: 90px;
+    }
+    .rank {
+        width: 30px;
+    }
+    th span.short {
+        display: inline;
+    }
+    th span.long {
+        display: none;
+    }
+}
+@media screen and (min-width: 400px) {
+    th span.short {
+        display: none;
+    }
+    th span.long {
+        display: inline;
+    }
+}
+@media screen and (min-width: 400px) and (max-width: 650px) {
+    .club {
+        display: none;
+    }
+}
+@media screen and (max-width: 800px) {
+	.town {
+        display: none;
+    }
+}
+@media screen and (min-width: 800px) and (max-width: 900px) {
+	.yob {
+        display: none;
+    }
+}
